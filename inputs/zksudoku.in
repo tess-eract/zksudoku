@@ -1,4 +1,13 @@
 // The program input for zksudoku/src/main.leo
 [main]
-puzzle: u32 = 1u32;
-key: u32 = 2u32;
+
+// 4x4 Sudoku solution: 
+// 0 1 2 3
+// 2 3 0 1 
+// 3 0 1 2
+// 1 2 3 0
+
+// =>  0123,2301,3012,1230 (base 4) = 464635500 (base 10)
+
+puzzle: u32 = 464635500u32;
+key: u32 = 8675309u32;
