@@ -1,0 +1,10 @@
+{
+    "program": "zksudoku.aleo",
+    "version": "0.0.0",
+    "description": "",
+    "development": {
+        "private_key": "APrivateKey1zkpBEJNN781X3cpWt4S6jji5aL1Smwkj5VQsdGjLWY2MQ7Z",
+        "address": "aleo1aysv7d6r2kxaq5khynpy7r0wzlwfn6mkvgmpaflke997z5l70y9sa2mdt6"
+    },
+    "license": "MIT"
+}
