@@ -1,4 +1,4 @@
 // The program input for zksudoku/src/main.leo
 [main]
-public a: u32 = 1u32;
-b: u32 = 2u32;
+puzzle: u32 = 1u32;
+key: u32 = 2u32;

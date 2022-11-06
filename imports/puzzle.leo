@@ -1,4 +1,4 @@
-program puzzle.leo {
+program puzzle.aleo {
     // We consider a 4x4 Sudoku puzzle as a 32-bit integer, or 
     // a 16-digit number in base 4. 
     struct Puzzle {
@@ -25,16 +25,17 @@ program puzzle.leo {
             return puzzle.bits & ROW0; 
         } else if index == 1u8 {
             index_in_bounds = true;
-            return (puzzle.bits & ROW1) >> 8u32;
+            return puzzle.bits & ROW1;
         } else if index == 2u8 {
             index_in_bounds = true;
-            return (puzzle.bits & ROW2) >> 16u32;
+            return puzzle.bits & ROW2;
         }   else if index == 3u8 {
             index_in_bounds = true;
-            return (puzzle.bits & ROW3) >> 24u32;
+            return puzzle.bits & ROW3;
         }
         // Index should always be 0-3: raises an error if not
         console.assert_eq(index_in_bounds, true);
+        return 0u32;
     }
 
     // Extracts the column at "index" from the puzzle, and returns it as a
@@ -67,6 +68,7 @@ program puzzle.leo {
         }
         // Index should always be 0-3: raises an error if not
         console.assert_eq(index_in_bounds, true);
+        return 0u32;
     }
 
     // Extracts the 2x2 box at "index" from the puzzle, and returns it as a
@@ -84,21 +86,22 @@ program puzzle.leo {
 
         let index_in_bounds : bool = false;
 
-        if index == 0u32 {
+        if index == 0u8 {
             index_in_bounds = true;
             return puzzle.bits & BOX0; 
-        } else if index == 1u32 {
+        } else if index == 1u8 {
             index_in_bounds = true;
             return puzzle.bits & BOX1;
-        } else if index == 2u32 {
+        } else if index == 2u8 {
             index_in_bounds = true;
             return puzzle.bits & BOX2;
-        }   else if index == 3u32 {
+        }   else if index == 3u8 {
             index_in_bounds = true;
             return puzzle.bits & BOX3;
         }
         // Index should always be 0-3: raises an error if not
         console.assert_eq(index_in_bounds, true);
+        return 0u32;
     }
 
 // Thinking of a 32-bit integer as a 16-digit number in base 4, checks to see if each of the digits
@@ -114,7 +117,7 @@ function no_duplicates(vec: u32) -> bool {
     // result will be a number from 0000 to 1111 (base 2), 
     // and will be 1111 (base 2) = 15 (base 10) exactly when 
     // each of the digits 0, 1, 2, 3 are present
-    for i: u32 in 0..16 {
+    for i: u32 in 0u32..16u32 {
         // a number from 0 to 3 
         let base_4_digit: u32 = (vec >> (2u32 * i)) & 3u32; 
         if base_4_digit != 0u32 {
@@ -130,7 +133,7 @@ function no_duplicates(vec: u32) -> bool {
 transition check_puzzle(puzzle: Puzzle) -> bool {
     let result: bool = true;
 
-    for i: u8 in 0..4 {
+    for i: u8 in 0u8..4u8 {
         result &= no_duplicates(get_row(puzzle, i));
         result &= no_duplicates(get_column(puzzle, i));
         result &= no_duplicates(get_box(puzzle, i));
