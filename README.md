@@ -39,11 +39,14 @@ to base 10.
 ## Example
 
 4x4 Sudoku solution: 
+```
 0 1 2 3
 2 3 0 1 
 3 0 1 2
 1 2 3 0
+
 => 0123,2301,3012,1230 (base 4) = 464635500 (base 10)
+```
 
 ```bash
 leo run commit 464635500u32 8675309u32
